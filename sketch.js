@@ -696,7 +696,7 @@ function preload() {
   flechaDer = loadImage("data/galeria/flecha_der.png");
 
   for (let i = 0; i < 4; i++) {
-    fondosGaleria[i] = loadImage("data/fondo/habitaciones_" + (i + 1) + ".png");
+    fondosGaleria[i] = loadImage("data/Fondo/habitaciones_" + (i + 1) + ".png");
   }
 
   // Cargar huevos de los personajes
