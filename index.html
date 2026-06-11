@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baby Iberá - Web Edition</title>
+  <!-- Google Fonts para tipografía premium -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Playpen+Sans:wght@500;700&display=swap" rel="stylesheet">
+  
+  <!-- Estilos de la aplicación -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Carga de p5.js y p5.sound desde CDN oficial -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/addons/p5.sound.min.js"></script>
+</head>
+<body>
+
+  <!-- Contenedor del Juego -->
+  <div id="game-container">
+    <!-- Pantalla de bienvenida / Desbloqueo de Audio del Navegador -->
+    <div id="start-overlay" class="overlay-glass">
+      <div class="overlay-content">
+        <h1 class="game-title">Baby Iberá</h1>
+        <p class="game-subtitle">Conservación y Aventura</p>
+        <button id="start-btn" class="glow-button">¡JUGAR AHORA!</button>
+        <div class="tip-box">
+          <p>💡 Tip: Presiona <strong>A</strong> / <strong>D</strong> para moverte y <strong>Espacio</strong> para saltar en los minijuegos.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script principal del juego -->
+  <script src="sketch.js"></script>
+</body>
+</html>
