@@ -1867,8 +1867,8 @@ function manejarControlesTactiles() {
 
 // --- TECLADO ---
 
-function keyPressed() {
-  if ((key === 'e' || key === 'E') && keyIsDown(CONTROL) && keyIsDown(SHIFT)) {
+function keyPressed(event) {
+  if ((key === 'e' || key === 'E') && event && event.ctrlKey && event.shiftKey) {
     modoEditor = !modoEditor;
     console.log("Modo Editor: " + (modoEditor ? "ACTIVADO" : "DESACTIVADO"));
     if (!modoEditor) {
