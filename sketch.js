@@ -652,12 +652,12 @@ function cargarLayout() {
           botonY[i] = json[nombresBotones[i] + "_y"];
         }
       }
-      personajeX = json["personajeX"] !== undefined ? json["personajeX"] : width / 2;
-      personajeY = json["personajeY"] !== undefined ? json["personajeY"] : height / 2;
-      huevoX = json["huevoX"] !== undefined ? json["huevoX"] : width / 2;
-      huevoY = json["huevoY"] !== undefined ? json["huevoY"] : height / 2 - 50;
-      barraX = json["barraX"] !== undefined ? json["barraX"] : 20;
-      barraY = json["barraY"] !== undefined ? json["barraY"] : 20;
+      personajeX = json["personajeX"] !== undefined ? json["personajeX"] : 532;
+      personajeY = json["personajeY"] !== undefined ? json["personajeY"] : 626;
+      huevoX = json["huevoX"] !== undefined ? json["huevoX"] : 522;
+      huevoY = json["huevoY"] !== undefined ? json["huevoY"] : 704;
+      barraX = json["barraX"] !== undefined ? json["barraX"] : 81;
+      barraY = json["barraY"] !== undefined ? json["barraY"] : 70;
       return;
     } catch (e) {
       setDefaultsPos();
@@ -667,12 +667,18 @@ function cargarLayout() {
 }
 
 function setDefaultsPos() {
-  personajeX = width / 2;
-  personajeY = height / 2;
-  huevoX = width / 2;
-  huevoY = height / 2 - 50;
-  barraX = 20;
-  barraY = 20;
+  botonX[0] = 887; botonY[0] = 307; // btn_comer
+  botonX[1] = 890; botonY[1] = 468; // btn_curar
+  botonX[2] = 891; botonY[2] = 635; // btn_jugar
+  botonX[3] = 893; botonY[3] = 800; // btn_dormir
+  botonX[4] = 880; botonY[4] = 64;  // btn_sonido
+  botonX[5] = 726; botonY[5] = 63;  // btn_reiniciar
+  personajeX = 532;
+  personajeY = 626;
+  huevoX = 522;
+  huevoY = 704;
+  barraX = 81;
+  barraY = 70;
 }
 
 // --- SETUP & PRELOAD ---
@@ -756,21 +762,7 @@ function setup() {
   // Detectar pantalla táctil
   isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
 
-  // Inicializar posiciones de botones
-  let margenDer = width - 150;
-  let espacio = 150;
-  botonX[0] = margenDer; botonY[0] = 200;
-  botonX[1] = margenDer; botonY[1] = 200 + espacio;
-  botonX[2] = margenDer; botonY[2] = 200 + espacio * 2;
-  botonX[3] = margenDer; botonY[3] = 200 + espacio * 3;
-  botonX[4] = width - 150; botonY[4] = 40;
-  botonX[5] = width - 300; botonY[5] = 40;
-
-  // Huevo, personaje e interface
-  personajeX = width / 2; personajeY = height / 2;
-  huevoX = width / 2; huevoY = height / 2 - 50;
-  barraX = 20; barraY = 20;
-
+  setDefaultsPos();
   cargarLayout();
 
   // Crear e inicializar reproductor de video
@@ -1876,9 +1868,14 @@ function manejarControlesTactiles() {
 // --- TECLADO ---
 
 function keyPressed() {
-  if (key === 'e' || key === 'E') {
+  if ((key === 'e' || key === 'E') && keyIsDown(CONTROL) && keyIsDown(SHIFT)) {
     modoEditor = !modoEditor;
     console.log("Modo Editor: " + (modoEditor ? "ACTIVADO" : "DESACTIVADO"));
+    if (!modoEditor) {
+      guardarLayout();
+      console.log("Layout guardado automáticamente al desactivar el modo editor.");
+    }
+    return false; // Evita el comportamiento predeterminado del navegador
   }
   if (modoEditor && (key === 'g' || key === 'G')) guardarLayout();
 
